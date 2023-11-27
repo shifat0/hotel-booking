@@ -1,0 +1,79 @@
+{
+  "rooms": [
+    {
+      "id": 1,
+      "hotelId": 1,
+      "category": "Family Room",
+      "roomTitle": "Room 201",
+      "roomDetails": {
+        "bed": "3",
+        "balcony": "1",
+        "washroom": "2"
+      },
+      "price": "200",
+      "booked": true,
+      "bookedFrom": "27/11/2023",
+      "bookedTo": "28/11/2023"
+    },
+    {
+      "id": 2,
+      "hotelId": 1,
+      "category": "Couple Room",
+      "roomTitle": "Room 301",
+      "roomDetails": {
+        "bed": "1",
+        "balcony": "1",
+        "washroom": "1"
+      },
+      "price": "500",
+      "booked": false,
+      "bookedFrom": "27/11/2023",
+      "bookedTo": "28/11/2023"
+    },
+    {
+      "id": 3,
+      "hotelId": 1,
+      "category": "Couple Room",
+      "roomTitle": "Room 302",
+      "roomDetails": {
+        "bed": "1",
+        "balcony": "1",
+        "washroom": "1"
+      },
+      "price": "500",
+      "booked": false,
+      "bookedFrom": "27/11/2023",
+      "bookedTo": "28/11/2023"
+    },
+    {
+      "id": 4,
+      "hotelId": 1,
+      "category": "Family Room",
+      "roomTitle": "Room 202",
+      "roomDetails": {
+        "bed": "1",
+        "balcony": "1",
+        "washroom": "1"
+      },
+      "price": "500",
+      "booked": false,
+      "bookedFrom": "27/11/2023",
+      "bookedTo": "28/11/2023"
+    },
+    {
+      "id": 5,
+      "hotelId": 1,
+      "category": "King Size Room",
+      "roomTitle": "Room 401",
+      "roomDetails": {
+        "bed": "1",
+        "balcony": "1",
+        "washroom": "1"
+      },
+      "price": "500",
+      "booked": false,
+      "bookedFrom": "27/11/2023",
+      "bookedTo": "28/11/2023"
+    }
+  ]
+}
