@@ -20,7 +20,8 @@ const Hotels = () => {
   ];
 
   return (
-    <div className="container mx-auto p-5 flex flex-col md:flex-row md:justify-between md:flex-wrap gap-5 items-center ">
+    // <div className="container mx-auto p-5 flex flex-col md:flex-row md:justify-between md:flex-wrap gap-5 items-center ">
+    <div className="container mx-auto p-5 grid grid-cols-[repeat(1,_1fr)] md:grid-cols-[repeat(2,_1fr)] lg:grid-cols-[repeat(3,_1fr)] gap-5 ">
       {hotels.map((hotel) => (
         <div className="flex flex-col h-[450px] w-full md:w-[350px] shadow-md rounded-md">
           <img

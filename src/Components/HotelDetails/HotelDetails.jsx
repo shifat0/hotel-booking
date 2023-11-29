@@ -1,13 +1,20 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import BookingModal from "../BookingModal/BookingModal";
+import { Link } from "react-router-dom";
 
 const HotelDetails = () => {
   const [rooms, setRooms] = useState([]);
   const [category, setCategory] = useState("");
+  const [toogleModal, setToogleModal] = useState(false);
+
   useEffect(() => {
     axios.get("http://localhost:5000/rooms").then((res) => setRooms(res.data));
   }, [setRooms]);
   // console.log(rooms);
+  // console.log(toogleModal);
+
+  const handleToogle = () => setToogleModal(!toogleModal);
 
   return (
     <div className="relative">
@@ -50,9 +57,10 @@ const HotelDetails = () => {
                     className="flex flex-col bg-dark p-5 shadow-md rounded-lg"
                     key={room.id}
                   >
-                    <h2 className="text-xl font-semibold mb-4">
-                      {room.roomTitle}
-                    </h2>
+                    <h2 className="text-xl font-semibold">{room.roomTitle}</h2>
+                    <span className="italic mb-4">
+                      Category: {room.category}
+                    </span>
                     <ul className="flex gap-2 list">
                       <li>{room.roomDetails.bed} Beds</li>
                       <li>{room.roomDetails.balcony} Balcony</li>
@@ -63,13 +71,16 @@ const HotelDetails = () => {
                       <strong className="not-italic">BDT {room.price}</strong>{" "}
                       per night
                     </span>
-                    <button
-                      type="button"
-                      className="bg-primary mx-auto p-2 max-w-max text-white mt-5 rounded-md cursor-pointer active:bg-secondary disabled:opacity-50 disabled:cursor-not-allowed disabled:active:bg-primary"
-                      disabled={room.booked === true}
-                    >
-                      Book Now!
-                    </button>
+                    <a href="#booking" className="mx-auto">
+                      <button
+                        type="button"
+                        className="bg-primary mx-auto p-2 max-w-max text-white mt-5 rounded-md cursor-pointer active:bg-secondary disabled:opacity-50 disabled:cursor-not-allowed disabled:active:bg-primary"
+                        disabled={room.booked === true}
+                        onClick={handleToogle}
+                      >
+                        Book Now!
+                      </button>
+                    </a>
                   </div>
                 ))
             : rooms.map((room) => (
@@ -77,9 +88,8 @@ const HotelDetails = () => {
                   className="flex flex-col bg-dark p-5 shadow-md rounded-lg"
                   key={room.id}
                 >
-                  <h2 className="text-xl font-semibold mb-4">
-                    {room.roomTitle}
-                  </h2>
+                  <h2 className="text-xl font-semibold">{room.roomTitle}</h2>
+                  <span className="italic mb-4">Category: {room.category}</span>
                   <ul className="flex gap-2 list">
                     <li>{room.roomDetails.bed} Beds</li>
                     <li>{room.roomDetails.balcony} Balcony</li>
@@ -89,16 +99,20 @@ const HotelDetails = () => {
                     <strong className="not-italic">BDT {room.price}</strong> per
                     night
                   </span>
-                  <button
-                    type="button"
-                    className="bg-primary mx-auto p-2 max-w-max text-white mt-5 rounded-md cursor-pointer active:bg-secondary disabled:opacity-50 disabled:cursor-not-allowed disabled:active:bg-primary"
-                    disabled={room.booked === true}
-                  >
-                    Book Now!
-                  </button>
+                  <a href="#booking" className="mx-auto">
+                    <button
+                      type="button"
+                      className="bg-primary mx-auto p-2 max-w-max text-white mt-5 rounded-md cursor-pointer active:bg-secondary disabled:opacity-50 disabled:cursor-not-allowed disabled:active:bg-primary"
+                      disabled={room.booked === true}
+                      onClick={handleToogle}
+                    >
+                      Book Now!
+                    </button>
+                  </a>
                 </div>
               ))}
         </div>
+        {toogleModal && <BookingModal handleToogle={handleToogle} />}
       </div>
     </div>
   );

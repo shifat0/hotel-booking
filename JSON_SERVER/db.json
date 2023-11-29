@@ -11,9 +11,7 @@
         "washroom": "2"
       },
       "price": "200",
-      "booked": true,
-      "bookedFrom": "27/11/2023",
-      "bookedTo": "28/11/2023"
+      "booked": false
     },
     {
       "id": 2,
@@ -26,9 +24,7 @@
         "washroom": "1"
       },
       "price": "500",
-      "booked": false,
-      "bookedFrom": "27/11/2023",
-      "bookedTo": "28/11/2023"
+      "booked": false
     },
     {
       "id": 3,
@@ -41,9 +37,7 @@
         "washroom": "1"
       },
       "price": "500",
-      "booked": false,
-      "bookedFrom": "27/11/2023",
-      "bookedTo": "28/11/2023"
+      "booked": false
     },
     {
       "id": 4,
@@ -56,9 +50,7 @@
         "washroom": "1"
       },
       "price": "500",
-      "booked": false,
-      "bookedFrom": "27/11/2023",
-      "bookedTo": "28/11/2023"
+      "booked": true
     },
     {
       "id": 5,
@@ -71,9 +63,7 @@
         "washroom": "1"
       },
       "price": "500",
-      "booked": false,
-      "bookedFrom": "27/11/2023",
-      "bookedTo": "28/11/2023"
+      "booked": false
     }
   ]
 }
