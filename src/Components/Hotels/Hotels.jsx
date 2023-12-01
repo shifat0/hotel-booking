@@ -1,29 +1,23 @@
-import React from "react";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 const Hotels = () => {
-  const hotels = [
-    {
-      name: "Hotel Name",
-      image:
-        "https://images.unsplash.com/photo-1625244724120-1fd1d34d00f6?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8aG90ZWxzfGVufDB8fDB8fHww",
-      place: "Hotel Place",
-      price: "200",
-      discount: "40%",
-    },
-    {
-      name: "Hotel Name",
-      image:
-        "https://images.unsplash.com/photo-1625244724120-1fd1d34d00f6?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8aG90ZWxzfGVufDB8fDB8fHww",
-      place: "Hotel Place",
-      price: "200",
-    },
-  ];
+  const [hotels, setHotels] = useState([]);
+
+  useEffect(() => {
+    axios
+      .get("http://localhost:5000/hotels")
+      .then((res) => setHotels(res.data));
+  }, []);
 
   return (
-    // <div className="container mx-auto p-5 flex flex-col md:flex-row md:justify-between md:flex-wrap gap-5 items-center ">
     <div className="container mx-auto p-5 grid grid-cols-[repeat(1,_1fr)] md:grid-cols-[repeat(2,_1fr)] lg:grid-cols-[repeat(3,_1fr)] gap-5 ">
       {hotels.map((hotel) => (
-        <div className="flex flex-col h-[450px] w-full md:w-[350px] shadow-md rounded-md">
+        <div
+          className="flex flex-col h-full w-full shadow-md rounded-md"
+          key={hotel.id}
+        >
           <img
             src={hotel.image}
             alt={hotel.name}
@@ -43,11 +37,11 @@ const Hotels = () => {
                 </span>
               )}
             </div>
-            <div>
+            <Link to={`/hotel/${hotel.id}`} state={{ hotel }}>
               <button className="bg-dark active:bg-primary text-white p-3 cursor-pointer rounded-md">
                 View Details
               </button>
-            </div>
+            </Link>
           </div>
         </div>
       ))}

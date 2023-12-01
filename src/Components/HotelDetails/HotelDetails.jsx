@@ -1,15 +1,20 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import BookingModal from "../BookingModal/BookingModal";
-import { Link } from "react-router-dom";
+import { useLocation, useParams } from "react-router-dom";
 
 const HotelDetails = () => {
   const [rooms, setRooms] = useState([]);
   const [category, setCategory] = useState("");
   const [toogleModal, setToogleModal] = useState(false);
+  const { id } = useParams();
+  const { state } = useLocation();
+  console.log(state);
 
   useEffect(() => {
-    axios.get("http://localhost:5000/rooms").then((res) => setRooms(res.data));
+    axios
+      .get(`http://localhost:5000/rooms?hotelId=${id}`)
+      .then((res) => setRooms(res.data));
   }, [setRooms]);
   // console.log(rooms);
   // console.log(toogleModal);
@@ -19,16 +24,16 @@ const HotelDetails = () => {
   return (
     <div className="relative">
       <img
-        src="https://images.unsplash.com/photo-1625244724120-1fd1d34d00f6?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8aG90ZWxzfGVufDB8fDB8fHww"
-        alt=""
+        src={state.hotel?.image}
+        alt={state.hotel?.name}
         className="absolute min-h-screen md:max-h-screen w-screen object-cover object-center overflow-hidden"
       />
       <div className="absolute inset-0 min-h-screen min-w-screen bg-opacity-60 backdrop-blur-sm bg-gray-800"></div>
       <div className="container mx-auto p-5 relative text-white">
         <div className="mb-20 flex flex-col md:flex-row md:items-center md:justify-between">
           <div>
-            <h2 className="text-5xl font-bold mb-2">Hotel Name</h2>
-            <span>Hotel Location</span>
+            <h2 className="text-5xl font-bold mb-2">{state.hotel?.name}</h2>
+            <span>{state.hotel?.place}</span>
           </div>
           <div className="flex flex-col gap-2">
             <span className="mt-5">Browse Rooms By Category</span>
@@ -69,7 +74,7 @@ const HotelDetails = () => {
 
                     <span className="italic mt-3">
                       <strong className="not-italic">BDT {room.price}</strong>{" "}
-                      per night
+                      per night {room.booked && "(Booked)"}
                     </span>
                     <a href="#booking" className="mx-auto">
                       <button
@@ -97,7 +102,7 @@ const HotelDetails = () => {
                   </ul>
                   <span className="italic mt-3">
                     <strong className="not-italic">BDT {room.price}</strong> per
-                    night
+                    night {room.booked && "(Booked)"}
                   </span>
                   <a href="#booking" className="mx-auto">
                     <button
