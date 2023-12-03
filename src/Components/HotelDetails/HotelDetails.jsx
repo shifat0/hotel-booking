@@ -5,11 +5,12 @@ import { useLocation, useParams } from "react-router-dom";
 
 const HotelDetails = () => {
   const [rooms, setRooms] = useState([]);
+  const [selectedRoom, setSelectedRoom] = useState(null);
   const [category, setCategory] = useState("");
   const [toogleModal, setToogleModal] = useState(false);
   const { id } = useParams();
   const { state } = useLocation();
-  console.log(state);
+  // console.log(state);
 
   useEffect(() => {
     axios
@@ -19,7 +20,10 @@ const HotelDetails = () => {
   // console.log(rooms);
   // console.log(toogleModal);
 
-  const handleToogle = () => setToogleModal(!toogleModal);
+  const handleToogle = () => {
+    setToogleModal(!toogleModal);
+    window.scrollTo(0, 0);
+  };
 
   return (
     <div className="relative">
@@ -81,7 +85,10 @@ const HotelDetails = () => {
                         type="button"
                         className="bg-primary mx-auto p-2 max-w-max text-white mt-5 rounded-md cursor-pointer active:bg-secondary disabled:opacity-50 disabled:cursor-not-allowed disabled:active:bg-primary"
                         disabled={room.booked === true}
-                        onClick={handleToogle}
+                        onClick={() => {
+                          handleToogle();
+                          setSelectedRoom(room);
+                        }}
                       >
                         Book Now!
                       </button>
@@ -104,20 +111,28 @@ const HotelDetails = () => {
                     <strong className="not-italic">BDT {room.price}</strong> per
                     night {room.booked && "(Booked)"}
                   </span>
-                  <a href="#booking" className="mx-auto">
-                    <button
-                      type="button"
-                      className="bg-primary mx-auto p-2 max-w-max text-white mt-5 rounded-md cursor-pointer active:bg-secondary disabled:opacity-50 disabled:cursor-not-allowed disabled:active:bg-primary"
-                      disabled={room.booked === true}
-                      onClick={handleToogle}
-                    >
-                      Book Now!
-                    </button>
-                  </a>
+
+                  <button
+                    type="button"
+                    className="bg-primary mx-auto p-2 max-w-max text-white mt-5 rounded-md cursor-pointer active:bg-secondary disabled:opacity-50 disabled:cursor-not-allowed disabled:active:bg-primary"
+                    disabled={room.booked === true}
+                    onClick={() => {
+                      handleToogle();
+                      setSelectedRoom(room);
+                    }}
+                  >
+                    Book Now!
+                  </button>
                 </div>
               ))}
         </div>
-        {toogleModal && <BookingModal handleToogle={handleToogle} />}
+        {toogleModal && (
+          <BookingModal
+            handleToogle={handleToogle}
+            selectedRoom={selectedRoom}
+            hotelId={id}
+          />
+        )}
       </div>
     </div>
   );

@@ -11,7 +11,7 @@
         "washroom": "2"
       },
       "price": "200",
-      "booked": false
+      "booked": true
     },
     {
       "id": 2,
@@ -24,7 +24,7 @@
         "washroom": "1"
       },
       "price": "500",
-      "booked": false
+      "booked": true
     },
     {
       "id": 3,
@@ -326,7 +326,6 @@
       "booked": false
     }
   ],
-
   "hotels": [
     {
       "id": 1,
