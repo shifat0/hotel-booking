@@ -1,8 +1,16 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
+import { authLogout } from "../../Redux/actions";
+import { connect } from "react-redux";
 
-const Navbar = () => {
-  let token = false;
+const mapDispatchToProps = (dispatch) => {
+  return {
+    authLogout: () => dispatch(authLogout()),
+  };
+};
+
+const Navbar = ({ authLogout }) => {
+  let token = localStorage.getItem("token");
 
   return (
     <div className="bg-primary p-5">
@@ -15,7 +23,10 @@ const Navbar = () => {
         <div className="flex gap-8 text-black ">
           {token ? (
             <NavLink to="/">
-              <button className="bg-[#F2FFE9] px-5 py-1 rounded-md">
+              <button
+                onClick={authLogout}
+                className="bg-[#F2FFE9] px-5 py-1 rounded-md"
+              >
                 Logout
               </button>
             </NavLink>
@@ -32,4 +43,4 @@ const Navbar = () => {
   );
 };
 
-export default Navbar;
+export default connect(null, mapDispatchToProps)(Navbar);

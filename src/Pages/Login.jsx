@@ -1,13 +1,42 @@
 import React, { useState } from "react";
 import Navbar from "../Components/Navbar/Navbar";
+import { authLogin, authSignup } from "../Redux/actions";
+import { connect } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
-const Login = () => {
+const mapDispatchToProps = (dispatch) => {
+  return {
+    authLogin: (email, password) => dispatch(authLogin(email, password)),
+    authSignUp: (name, email, password) =>
+      dispatch(authSignup(name, email, password)),
+  };
+};
+
+const Login = ({ authLogin, authSignUp }) => {
   const [mode, setMode] = useState("login");
+  const [data, setData] = useState({
+    name: "",
+    email: "",
+    password: "",
+  });
+
+  const navigate = useNavigate();
+
   const handleSubmit = (e) => {
+    // e.preventDefault();
+    mode === "login"
+      ? authLogin(data.email, data.password)
+      : authSignUp(data.name, data.email, data.password);
+    setTimeout(() => {
+      navigate("/");
+    }, 2000);
     e.preventDefault();
   };
+
   const handleChange = (e) => {
-    console.log(e.target.value);
+    setData((prev) => {
+      return { ...prev, [e.target.name]: e.target.value };
+    });
   };
 
   return (
@@ -76,4 +105,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default connect(null, mapDispatchToProps)(Login);
