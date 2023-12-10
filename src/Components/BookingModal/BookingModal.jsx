@@ -1,20 +1,26 @@
 import axios from "axios";
 import React from "react";
+import { connect } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
-const BookingModal = ({ handleToogle, selectedRoom, hotelId }) => {
+const mapStateToProps = (state) => {
+  return {
+    username: state.username,
+  };
+};
+
+const BookingModal = ({ handleToogle, selectedRoom, username }) => {
   const navigate = useNavigate();
   const handleSubmit = (e) => {
     e.preventDefault();
     axios
-      .put(
-        `http://localhost:5000/rooms/${selectedRoom.id}?hotelId=${hotelId}`,
-        { ...selectedRoom, booked: true }
-      )
+      .put(`http://localhost:5000/rooms/${selectedRoom.id}`, {
+        ...selectedRoom,
+        booked: true,
+      })
       .then((res) => {
-        console.log(res);
         navigate(`/`);
-        alert(`${res.data.roomTitle} Booked Successfully`);
+        alert(`${res.data.roomTitle} is booked by ${username} Successfully`);
       });
   };
 
@@ -32,7 +38,7 @@ const BookingModal = ({ handleToogle, selectedRoom, hotelId }) => {
           onSubmit={(e) => handleSubmit(e)}
         >
           <label>Name</label>
-          <input type="text" name="name" required />
+          <input type="text" name="name" value={username} required disabled />
           <label>Phone Number</label>
           <input type="text" name="number" required />
           <input
@@ -52,4 +58,4 @@ const BookingModal = ({ handleToogle, selectedRoom, hotelId }) => {
   );
 };
 
-export default BookingModal;
+export default connect(mapStateToProps)(BookingModal);

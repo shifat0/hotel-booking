@@ -130,7 +130,6 @@ const HotelDetails = () => {
           <BookingModal
             handleToogle={handleToogle}
             selectedRoom={selectedRoom}
-            hotelId={id}
           />
         )}
       </div>

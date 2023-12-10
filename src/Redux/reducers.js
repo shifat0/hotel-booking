@@ -1,6 +1,7 @@
 const INITIAL_STATE = {
   username: "",
-  errMsg: null,
+  token: null,
+  errMessage: null,
 };
 
 export const reducers = (state = INITIAL_STATE, action) => {
@@ -9,16 +10,18 @@ export const reducers = (state = INITIAL_STATE, action) => {
       return {
         ...state,
         username: action.payload.username,
+        token: action.payload.token,
       };
     case "AUTH_FAILURE":
       return {
         ...state,
-        errMsg: action.payload,
+        errMessage: action.payload,
       };
     case "AUTH_LOGOUT":
       return {
         username: "",
-        errMsg: null,
+        token: null,
+        errMessage: null,
       };
     default:
       return state;

@@ -3,15 +3,19 @@ import { NavLink } from "react-router-dom";
 import { authLogout } from "../../Redux/actions";
 import { connect } from "react-redux";
 
+const mapStateToProps = (state) => {
+  return {
+    token: state.token,
+  };
+};
+
 const mapDispatchToProps = (dispatch) => {
   return {
     authLogout: () => dispatch(authLogout()),
   };
 };
 
-const Navbar = ({ authLogout }) => {
-  let token = localStorage.getItem("token");
-
+const Navbar = ({ authLogout, token }) => {
   return (
     <div className="bg-primary p-5">
       <div className="container mx-auto flex justify-between">
@@ -43,4 +47,4 @@ const Navbar = ({ authLogout }) => {
   );
 };
 
-export default connect(null, mapDispatchToProps)(Navbar);
+export default connect(mapStateToProps, mapDispatchToProps)(Navbar);

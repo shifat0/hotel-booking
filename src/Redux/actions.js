@@ -14,13 +14,12 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 
-export const authSuccess = (username, token, userId) => {
+export const authSuccess = (username, token) => {
   return {
     type: "AUTH_SUCCESS",
     payload: {
       username: username,
       token: token,
-      userId: userId,
     },
   };
 };
@@ -36,17 +35,14 @@ export const authLogin = (email, password) => {
   return (dispatch) => {
     signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
-        dispatch(
-          authSuccess(
-            userCredential.user.displayName,
-            userCredential.user.accessToken,
-            userCredential.user.uid
-          )
-        );
-        console.log(userCredential.user);
-
         localStorage.setItem("token", userCredential.user.accessToken);
         localStorage.setItem("username", userCredential.user.displayName);
+        dispatch(
+          authSuccess(
+            localStorage.getItem("username"),
+            localStorage.getItem("token")
+          )
+        );
       })
       .catch((err) => {
         dispatch(authError(err.message));
@@ -58,20 +54,20 @@ export const authSignup = (name, email, password) => {
   return async (dispatch) => {
     await createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
+        localStorage.setItem("token", userCredential.user.accessToken);
+        localStorage.setItem("username", userCredential.user.displayName);
+
         updateProfile(userCredential.user, {
           displayName: name,
         }).then(() => {
           dispatch(
             authSuccess(
-              userCredential.user.displayName,
-              userCredential.user.accessToken,
-              userCredential.user.uid
+              localStorage.getItem("username"),
+              localStorage.getItem("token")
             )
           );
-
-          localStorage.setItem("token", userCredential.user.accessToken);
-          localStorage.setItem("username", userCredential.user.displayName);
         });
+        console.log(userCredential);
       })
       .catch((err) => {
         dispatch(authError(err.message));
@@ -80,8 +76,7 @@ export const authSignup = (name, email, password) => {
 };
 
 export const authLogout = () => {
-  localStorage.removeItem("token");
-  localStorage.removeItem("username");
+  localStorage.clear();
   return {
     type: "AUTH_LOGOUT",
   };

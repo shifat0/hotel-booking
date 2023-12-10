@@ -66,7 +66,7 @@
       "booked": false
     },
     {
-      "id": 1,
+      "id": 6,
       "hotelId": 2,
       "category": "Family Room",
       "roomTitle": "Room 201",
@@ -79,7 +79,7 @@
       "booked": false
     },
     {
-      "id": 2,
+      "id": 7,
       "hotelId": 2,
       "category": "Couple Room",
       "roomTitle": "Room 301",
@@ -92,7 +92,7 @@
       "booked": false
     },
     {
-      "id": 3,
+      "id": 8,
       "hotelId": 2,
       "category": "Couple Room",
       "roomTitle": "Room 302",
@@ -105,7 +105,7 @@
       "booked": false
     },
     {
-      "id": 4,
+      "id": 9,
       "hotelId": 2,
       "category": "Family Room",
       "roomTitle": "Room 202",
@@ -118,7 +118,7 @@
       "booked": false
     },
     {
-      "id": 5,
+      "id": 10,
       "hotelId": 2,
       "category": "King Size Room",
       "roomTitle": "Room 401",
@@ -131,7 +131,7 @@
       "booked": false
     },
     {
-      "id": 1,
+      "id": 11,
       "hotelId": 3,
       "category": "Family Room",
       "roomTitle": "Room 201",
@@ -144,7 +144,7 @@
       "booked": false
     },
     {
-      "id": 2,
+      "id": 12,
       "hotelId": 3,
       "category": "Couple Room",
       "roomTitle": "Room 301",
@@ -157,7 +157,7 @@
       "booked": false
     },
     {
-      "id": 3,
+      "id": 13,
       "hotelId": 3,
       "category": "Couple Room",
       "roomTitle": "Room 302",
@@ -170,7 +170,7 @@
       "booked": false
     },
     {
-      "id": 4,
+      "id": 14,
       "hotelId": 3,
       "category": "Family Room",
       "roomTitle": "Room 202",
@@ -183,7 +183,7 @@
       "booked": false
     },
     {
-      "id": 5,
+      "id": 15,
       "hotelId": 3,
       "category": "King Size Room",
       "roomTitle": "Room 401",
@@ -196,7 +196,7 @@
       "booked": false
     },
     {
-      "id": 1,
+      "id": 16,
       "hotelId": 4,
       "category": "Family Room",
       "roomTitle": "Room 201",
@@ -209,7 +209,7 @@
       "booked": false
     },
     {
-      "id": 2,
+      "id": 17,
       "hotelId": 4,
       "category": "Couple Room",
       "roomTitle": "Room 301",
@@ -222,7 +222,7 @@
       "booked": false
     },
     {
-      "id": 3,
+      "id": 18,
       "hotelId": 4,
       "category": "Couple Room",
       "roomTitle": "Room 302",
@@ -235,7 +235,7 @@
       "booked": false
     },
     {
-      "id": 4,
+      "id": 19,
       "hotelId": 4,
       "category": "Family Room",
       "roomTitle": "Room 202",
@@ -248,7 +248,7 @@
       "booked": false
     },
     {
-      "id": 5,
+      "id": 20,
       "hotelId": 4,
       "category": "King Size Room",
       "roomTitle": "Room 401",
@@ -261,7 +261,7 @@
       "booked": false
     },
     {
-      "id": 1,
+      "id": 21,
       "hotelId": 5,
       "category": "Family Room",
       "roomTitle": "Room 201",
@@ -274,7 +274,7 @@
       "booked": false
     },
     {
-      "id": 2,
+      "id": 22,
       "hotelId": 5,
       "category": "Couple Room",
       "roomTitle": "Room 301",
@@ -287,7 +287,7 @@
       "booked": false
     },
     {
-      "id": 3,
+      "id": 23,
       "hotelId": 5,
       "category": "Couple Room",
       "roomTitle": "Room 302",
@@ -300,7 +300,7 @@
       "booked": false
     },
     {
-      "id": 4,
+      "id": 24,
       "hotelId": 5,
       "category": "Family Room",
       "roomTitle": "Room 202",
@@ -313,7 +313,7 @@
       "booked": false
     },
     {
-      "id": 5,
+      "id": 25,
       "hotelId": 5,
       "category": "King Size Room",
       "roomTitle": "Room 401",
